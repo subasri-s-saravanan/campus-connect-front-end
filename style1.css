@@ -1,0 +1,67 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9fbff;
+    transition: background-color 0.3s ease;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  /* Heading */
+  .main-heading {
+    text-align: center;
+    font-size: 3em;
+    margin-top: 20px;
+    color: blueviolet;
+  }
+  
+  /* Moving Text */
+  .moving-text {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    font-size: 2em;
+    animation: moveText 10s linear infinite;
+    white-space: nowrap;
+    background: linear-gradient(to right, lightgreen, yellow, hotpink);
+    padding: 10px 20px;
+    color: #333;
+  }
+  
+  /* Animation */
+  @keyframes moveText {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+  
+  /* Media Query for Tablets */
+  @media (max-width: 768px) {
+    .main-heading {
+      font-size: 2em;
+      margin: 30px 10px;
+    }
+  
+    .moving-text {
+      font-size: 1.2em;
+      padding: 8px 16px;
+    }
+  }
+  
+  /* Media Query for Phones */
+  @media (max-width: 480px) {
+    .main-heading {
+      font-size: 1.5em;
+    }
+  
+    .moving-text {
+      font-size: 1em;
+      padding: 6px 12px;
+    }
+  }
+  

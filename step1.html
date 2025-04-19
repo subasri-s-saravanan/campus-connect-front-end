@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      /* Media Queries for different screen sizes */
+      @media (max-width: 1024px) {
+        body {
+          background-color: #d6eaff;
+        }
+        .main-heading {
+          font-size: 2.5em;
+        }
+        .club-card {
+          max-width: 90%;
+        }
+        .moving-text {
+          font-size: 1.5em;
+        }
+      }
+
+      /* 📱 Small screens (mobiles) */
+      @media (max-width: 800px) {
+        body {
+          background-color: #ffe4e1;
+        }
+      }
+
+      @media (min-width: 1024px) and (max-width:1439px) {
+        body {
+          background-color: powderblue;
+        }
+
+        .main-heading {
+          font-size: 2em;
+          text-align: center;
+          margin-top: 40px;
+        }
+
+        .moving-text {
+          font-size: 1.2em;
+        }
+
+        .corner-img {
+          width: 70px;
+          top: 5px;
+          left: 5px;
+        }
+
+        .club-card {
+          padding: 15px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      /* 📲 Extra small screens (very small phones) */
+      @media (max-width: 480px) {
+        body {
+          background-color: papayawhip;
+        }
+
+        h1 {
+          font-size: 2em;
+          padding-top: 100px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+      
+      /* Styling for Profile Dropdown */
+      .profile-container {
+        position: relative;
+      }
+
+      .profile-pic {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .profile-dropdown {
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        min-width: 150px;
+        z-index: 9999;
+      }
+
+      .profile-dropdown a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .profile-dropdown a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+      <h1 class="main-heading">Glad to welcome and connect Everyone</h1>
+      <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#announcements">Announcements</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+      </div>
+
+      <div class="moving-text">
+        <center>
+          <p>Welcome! to campus connect..</p>
+        </center>
+      </div>
+    </header>
+
+    <img src="our logo.png" alt="Corner Image" class="corner-img">
+
+    <div class="club-card" role="region" aria-label="Design Society Card">
+      <button class="dark-toggle" title="Toggle Dark Mode">🌙</button>
+
+      <div class="club-header">
+        <div class="club-logo">DS</div>
+        <div class="club-info">
+          <h2>Design Society</h2>
+          <span>Creative Minds Club</span>
+        </div>
+      </div>
+
+      <div class="profile-container">
+        <div class="profile-menu">
+          <img src="your-profile-pic.jpg" alt="Profile" class="profile-pic" id="profilePic">
+          <div class="profile-dropdown" id="dropdownMenu">
+            <a href="#">My Profile</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-summary">
+        <strong>Next Event:</strong> April 20, 2025<br />
+        <strong>Topic:</strong> UI/UX Hackathon Prep<br />
+        <strong>Time:</strong> 4:00 PM - 6:00 PM
+      </div>
+
+      <div class="expandable" id="moreInfo">
+        <p><strong>Location:</strong> Main Auditorium</p>
+        <p><strong>Description:</strong> Join us for a hands-on design sprint where you'll team up to tackle real-world UX challenges. Snacks provided!</p>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn btn-join">Join</button>
+        <button class="btn btn-more" onclick="toggleMore()">More Info</button>
+      </div>
+    </div>
+
+    <script>
+      const profilePic = document.getElementById('profilePic');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      // Toggle profile dropdown visibility when profile image is clicked
+      profilePic.addEventListener('click', function(event) {
+        event.stopPropagation();  // Prevent the click event from closing the dropdown immediately
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+      });
+
+      // Close dropdown when clicking outside
+      window.addEventListener('click', function(event) {
+        if (!profilePic.contains(event.target) && !dropdownMenu.contains(event.target)) {
+          dropdownMenu.style.display = 'none';
+        }
+      });
+
+      // Dark mode toggle functionality
+      const toggle = document.querySelector('.dark-toggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+      });
+
+      function toggleMore() {
+        const section = document.getElementById('moreInfo');
+        section.classList.toggle('expanded');
+      }
+    </script>
+</body>
+</html>
